@@ -13,5 +13,12 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  daisyui: {
+    themes: [
+      "cmyk",
+      "night",
+      
+    ],
+  },
 };

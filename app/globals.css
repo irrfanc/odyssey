@@ -1,21 +1,134 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* html, body {
+  overflow-x: hidden;
+} */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.animate-gradient-3d {
+    background-size: 400% 400%;
+    animation: gradient3D 6s ease infinite;
   }
-}
+  
+  .animate-slide-in {
+    animation: slideIn 1.5s ease-out;
+  }
+  
+  .animate-pulse-3d {
+    animation: pulse3D 2s infinite;
+  }
+  
+  @keyframes gradient3D {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateZ(-100px) rotateX(30deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateZ(0) rotateX(0);
+    }
+  }
+  
+  @keyframes pulse3D {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+  .animate-glow {
+    animation: glow 2s infinite alternate;
+  }
+  @keyframes spin-slow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 10s linear infinite;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .letter-animate {
+    display: inline-block;
+    opacity: 0;
+    animation: slideIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+  
+  .letter-animate:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .letter-animate:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .letter-animate:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  .letter-animate:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+  .letter-animate:nth-child(5) {
+    animation-delay: 0.8s;
+  }
+  .letter-animate:nth-child(6) {
+    animation-delay: 0.10s;
+  }
+  .letter-animate:nth-child(7) {
+    animation-delay: 0.12s;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  @keyframes typing {
+    0%, 80%, 100% {
+      opacity: 0; /* Dots fade in and out */
+      transform: scale(0.8); /* Slightly shrink */
+    }
+    40% {
+      opacity: 1;
+      transform: scale(1); /* Fully visible and slightly larger */
+    }
+  }
+  
+  /* Typing effect for dots */
+  .animate-typing {
+    animation: typing 1.2s infinite ease-in-out;
+  }
+  
