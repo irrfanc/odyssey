@@ -118,33 +118,31 @@ const Chat = () => {
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-100 font-sans relative">
       {/* Header */}
       <div className="sticky top-0 z-10 p-4 flex justify-between items-center bg-gray-900 bg-opacity-75 backdrop-blur-md">
-      <h1
-  className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-text tracking-wide flex items-center"
->
-  Chat with Odyssey
-  <span className="ml-2 flex">
-    {Array.from({ length: 3 }).map((_, index) => (
-      <span
-        key={index}
-        className="inline-block w-2 h-2 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 rounded-full mx-[1px] animate-typing mt-4 "
-        style={{
-          animationDelay: `${index * 0.3}s`,
-        }}
-      ></span>
-    ))}
-  </span>
-</h1>
-
-
-
+        <h1
+          className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-text tracking-wide flex items-center"
+        >
+          Chat with Odyssey
+          <span className="ml-2 flex">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <span
+                key={index}
+                className="inline-block w-2 h-2 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 rounded-full mx-[1px] animate-typing mt-4"
+                style={{
+                  animationDelay: `${index * 0.3}s`,
+                }}
+              ></span>
+            ))}
+          </span>
+        </h1>
         {messages.length > 0 && (
-          <button
+        <button
             onClick={clearMessages}
-            className="bg-red-600 text-white p-2 rounded-full hover:bg-red-700 transition-all shadow-md"
+            className="md:hidden mr-14 mt-2 bg-red-600 text-white p-2 rounded-full hover:bg-red-700 transition-all shadow-md 
+            fixed top-4 right-4 md:relative md:top-auto md:right-auto"
           >
             <FaTrash size={16} />
-          </button>
-        )}
+          </button> )}
+        
       </div>
 
       {/* Chat Area */}
@@ -162,24 +160,24 @@ const Chat = () => {
         ) : (
           messages.map(({ role, content, date }, index) => (
             <div
-            key={index}
-            className={`flex ${
-              role === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
-            <div
-              className={`p-4 max-w-md rounded-lg shadow-md ${
-                role === "user"
-                  ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white"
-                  : "bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-gray-100"
+              key={index}
+              className={`flex ${
+                role === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              <p className="text-base leading-relaxed font-medium">
-                {content}
-              </p>
-              <span className="text-xs text-gray-400 mt-2 block">{date}</span>
+              <div
+                className={`p-4 max-w-md rounded-lg shadow-md ${
+                  role === "user"
+                    ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white"
+                    : "bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-gray-100"
+                }`}
+              >
+                <p className="text-base leading-relaxed font-medium">
+                  {content}
+                </p>
+                <span className="text-xs text-gray-400 mt-2 block">{date}</span>
+              </div>
             </div>
-          </div>
           ))
         )}
         {isPending && <TypingIndicator />}
@@ -209,6 +207,15 @@ const Chat = () => {
         >
           {isPending ? "Sending..." : <FaPaperPlane />}
         </button>
+        {messages.length > 0 && (
+          <button
+            onClick={clearMessages}
+            className="hidden md:block bg-red-600 text-white p-2 rounded-full hover:bg-red-700 transition-all shadow-md 
+            fixed top-4 right-4 md:relative md:top-auto md:right-auto ml-2"
+          >
+            <FaTrash size={16} />
+          </button>
+        )}
       </form>
     </div>
   );

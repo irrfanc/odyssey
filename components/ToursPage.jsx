@@ -9,9 +9,23 @@ import Loading from './loading';
 
 const ToursPage = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [error, setError] = useState(null);
+
   const { data, isPending } = useQuery({
     queryKey: ['tours', searchValue],
-    queryFn: () => getAllTours(searchValue),
+    queryFn: async () => {
+      try {
+        const response = await getAllTours(searchValue);
+        setError(null); 
+        return response;
+      } catch (err) {
+        console.error('Error fetching tours:', err);
+        setError(
+          'This page is currently experiencing a compatibility issue. Our platform uses IPv4, but the database relies on IPv6. This mismatch is preventing the page from functioning properly. I am working on resolving this. Thank you for your patience!'
+        );
+        return [];
+      }
+    },
   });
 
   return (
@@ -19,14 +33,18 @@ const ToursPage = () => {
       {/* Header Section */}
       <header
         className="relative h-80 bg-cover bg-center rounded-lg mt-4 mx-4"
-        style={{ backgroundImage: `url(${waterfallImage.src})`,  backgroundPosition: 'center 50%' }}
+        style={{
+          backgroundImage: `url(${waterfallImage.src})`,
+          backgroundPosition: 'center 50%',
+        }}
       >
         <div className="rounded-lg absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center">
           <h1 className="text-5xl font-bold text-white mb-4">
             Find the perfect tour
           </h1>
           <p className="text-lg text-white mb-6">
-            Discover the best attractions, neighborhoods, and hidden gems with our local guides.
+            Discover the best attractions, neighborhoods, and hidden gems with
+            our local guides.
           </p>
           <div className="join w-full max-w-lg mt-12">
             <input
@@ -49,14 +67,35 @@ const ToursPage = () => {
         </div>
       </header>
 
-      {/* Popular Cities Section */}
+      {/* Main Content */}
       <section className="p-8">
-        <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 inline-block">Popular cities</h2>
-        {isPending ? (
-          <Loading />
-        ) : (
-          <ToursList data={data} />
+        <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 inline-block">
+          Popular cities
+        </h2>
+
+        {isPending && <Loading />}
+
+        {/* Error State */}
+        {error && !isPending && (
+          <div className="flex justify-center items-center ">
+            <div className="bg-red-100 border border-red-300 rounded-lg p-6 max-w-xl text-center shadow-md">
+              <h2 className="text-2xl font-semibold text-red-600 mb-4">
+                Oops! Something went wrong.
+              </h2>
+              <p className="text-gray-700 mb-6">
+                {error}
+              </p>
+              <button
+                className="btn btn-primary px-6 py-2"
+                onClick={() => window.location.reload()}
+              >
+                Refresh Page
+              </button>
+            </div>
+          </div>
         )}
+
+        {!isPending && !error && <ToursList data={data} />}
       </section>
     </div>
   );
