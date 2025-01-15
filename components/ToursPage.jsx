@@ -21,7 +21,7 @@ const ToursPage = () => {
       } catch (err) {
         console.error('Error fetching tours:', err);
         setError(
-          'Oops! Some error occurred!'
+          'Some error occurred!'
         );
         return [];
       }
