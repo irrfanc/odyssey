@@ -21,7 +21,7 @@ const ToursPage = () => {
       } catch (err) {
         console.error('Error fetching tours:', err);
         setError(
-          'This page is currently experiencing a compatibility issue. Our platform uses IPv4, but the database relies on IPv6. This mismatch is preventing the page from functioning properly. I am working on resolving this. Thank you for your patience!'
+          'Oops! Some error occurred!'
         );
         return [];
       }

@@ -168,7 +168,7 @@ const NewTour = () => {
 
       <div className="mx-auto mt-16 max-w-6xl px-4 scrollbar-hide w-screen overflow-x-hidden">
   {tour ? <TourInfo tour={tour} /> : null}
-  <h2 className="text-4xl font-bold mb-10 text-center text-gradient bg-gradient-to-r from-blue-500 to-purple-500 inline-block">
+  <h2 className="text-4xl font-bold mb-10 text-center text-gradient bg-gradient-to-r from-blue-500 to-purple-500 inline-block mt-4">
     Explore Trending Tours
   </h2>
 

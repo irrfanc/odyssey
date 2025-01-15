@@ -3,7 +3,7 @@ import { getSingleTour } from '@/utils/action';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import axios from 'axios';
-import SwiperCarousel from '@/components/SwiperCarousel'; // Import the new client component
+import SwiperCarousel from '@/components/SwiperCarousel'; 
 
 const url = `https://api.unsplash.com/search/photos?client_id=${process.env.NEXT_PUBLIC_UNSPLASH_API_KEY}&query=`;
 
@@ -11,12 +11,10 @@ const SingleTourPage = async ({ params }) => {
   // Fetch tour details
   const tour = await getSingleTour(params.id);
 
-  // If no tour found, redirect to tours list
   if (!tour) {
     redirect('/tours');
   }
 
-  // Fetch images for the city
   let tourImages = [];
   try {
     const { data } = await axios.get(`${url}${tour.city}&per_page=5`);

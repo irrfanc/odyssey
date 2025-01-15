@@ -1,4 +1,4 @@
-'use client'; // Ensure this is at the top of the file
+'use client';
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
@@ -7,7 +7,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { SiOpenaigym } from 'react-icons/si';
 
-// Dynamically import Globe to avoid server-side rendering issues
 const Globe = dynamic(() => import('react-globe.gl'), { ssr: false });
 
 const Page = () => {
@@ -16,7 +15,6 @@ const Page = () => {
   useEffect(() => {
     AOS.init({ duration: 1200 });
 
-    // Customize globe rotation
     const globe = globeRef.current;
     if (globe) {
       globe.controls().autoRotate = true;
@@ -24,7 +22,6 @@ const Page = () => {
     }
   }, []);
 
-  // Example data: Twinkling locations
   const locations = [
     { lat: 37.7749, lng: -122.4194, size: 1.5, color: 'yellow' }, // San Francisco
     { lat: 48.8566, lng: 2.3522, size: 1.5, color: 'lightblue' }, // Paris
@@ -32,7 +29,6 @@ const Page = () => {
     { lat: 28.6139, lng: 77.209, size: 1.5, color: 'green' }, // New Delhi
   ];
 
-  // Example data: Flight paths
   const arcsData = [
     {
       startLat: 37.7749,
@@ -85,9 +81,8 @@ const Page = () => {
 
       {/* Hero Section */}
       <section className="w-full px-10 py-20 flex flex-col md:flex-row items-center justify-center relative z-0">
-        {/* Left Content (Globe Animation) */}
         <div
-          className="absolute -top-20 -left-[45%] md:right-[25%] w-[200%] h-full"
+          className="md:-left-[45%] absolute -top-20 -left-[60%] md:right-[25%] w-[200%] h-full"
           style={{ boxShadow: '0 0 50px rgba(0, 255, 255, 0.6)' }}
         >
           <Globe
