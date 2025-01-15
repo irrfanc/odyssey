@@ -19,7 +19,7 @@ const SwiperCarousel = ({ images, city }) => {
         slidesPerView={3}
         loop={true}
         breakpoints={{
-          400: {
+          350: {
             slidesPerView: 1,
             spaceBetween: 10,
           },

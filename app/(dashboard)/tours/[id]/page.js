@@ -46,7 +46,7 @@ const SingleTourPage = async ({ params }) => {
         </Link>
       </div>
 
-      <div className="mb-16">
+      <div className="lg:mb-16">
         <SwiperCarousel images={tourImages} city={tour.city} />
       </div>
 
