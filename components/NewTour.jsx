@@ -139,30 +139,31 @@ const NewTour = () => {
       Find unforgettable tours and activities for your next trip
     </h1>
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-8">
-      <div className="join">
-        <input
-          type="text"
-          className="input input-bordered join-item w-full"
-          placeholder="City"
-          name="city"
-          value={formData.city}
-          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          className="input input-bordered join-item w-full"
-          placeholder="Country"
-          name="country"
-          value={formData.country}
-          onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-          required
-        />
-        <button className="btn btn-primary join-item" type="submit">
-          Generate Tour
-        </button>
-      </div>
-    </form>
+   <div className="join">
+     <input
+       type="text"
+       className="input input-bordered join-item w-full bg-white text-black dark:bg-gray-800 dark:text-white"
+       placeholder="City"
+       name="city"
+       value={formData.city}
+       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+       required
+     />
+     <input
+       type="text"
+       className="input input-bordered join-item w-full bg-white text-black dark:bg-gray-800 dark:text-white"
+       placeholder="Country"
+       name="country"
+       value={formData.country}
+       onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+       required
+     />
+     <button className="btn btn-primary join-item" type="submit">
+       Generate Tour
+     </button>
+   </div>
+ </form>
+
   </div>
 </div>
 

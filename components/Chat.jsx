@@ -187,17 +187,17 @@ const Chat = () => {
       {/* Input Area */}
       <form
   onSubmit={handleSubmit}
-  className={`transition-all duration-300 ${
+  className={`transition-all duration-500 ease-in-out ${
     inputPosition === "center"
-      ? "absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-2xl bg-gray-800 bg-opacity-80 backdrop-blur-md border rounded-full shadow-lg flex items-center px-6 py-3 min-h-[64px]"
-      : "fixed left-1/2 bottom-4 transform -translate-x-1/2 w-11/12 max-w-3xl bg-gray-800 bg-opacity-80 backdrop-blur-md border rounded-full shadow-lg flex items-center px-6 py-3 min-h-[64px]"
+      ? "absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-2xl bg-gray-800 bg-opacity-80 backdrop-blur-md border-2 border-gray-700 rounded-full shadow-xl flex items-center px-6 py-3 min-h-[64px] focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-opacity-50"
+      : "fixed left-1/2 bottom-4 transform -translate-x-1/2 w-11/12 max-w-3xl bg-gray-800 bg-opacity-80 backdrop-blur-md border-2 border-gray-700 rounded-full shadow-xl flex items-center px-6 py-3 min-h-[64px] focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-opacity-50"
   }`}
 >
   {/* Input Field */}
   <input
     type="text"
     placeholder={placeholder}
-    className="flex-grow bg-transparent text-lg placeholder-gray-400 focus:outline-none text-gray-100"
+    className="flex-grow bg-transparent text-lg placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-0 focus:border-transparent transition-all duration-300 ease-in-out"
     value={text}
     onChange={(e) => setText(e.target.value)}
   />
@@ -205,7 +205,7 @@ const Chat = () => {
   {/* Submit Button */}
   <button
     type="submit"
-    className="ml-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full shadow-md flex items-center"
+    className="ml-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full shadow-md flex items-center hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 transition-colors duration-300 ease-in-out"
     disabled={isPending}
   >
     {isPending ? (
@@ -219,7 +219,7 @@ const Chat = () => {
   {messages.length > 0 && (
     <button
       onClick={clearMessages}
-      className="hidden md:block ml-2 bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition-all shadow-md items-center"
+      className="hidden md:block ml-2 bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition-all duration-300 ease-in-out shadow-md"
     >
       <FaTrash size={16} />
     </button>

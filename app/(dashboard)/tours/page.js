@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query';
 const AllToursPage = async () => {
   const queryClient = new QueryClient();
-  // ? Why are we prefetching and what is prefetching on the server
+  
   await queryClient.prefetchQuery({
     queryKey: ['tours', ' '],
     queryFn: () => getAllTours(),
